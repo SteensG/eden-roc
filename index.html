@@ -715,28 +715,28 @@
 
         <!-- Form -->
         <div class="lg:col-span-3">
-          <form class="space-y-5" onsubmit="return false;">
+          <form class="space-y-5" action="https://submit-form.com/dAbJT14I7" method="POST">
             <div class="grid grid-cols-2 gap-4">
               <div>
                 <label class="block text-ink/50 text-xs font-bold uppercase tracking-[0.12em] mb-2">Voornaam *</label>
-                <input type="text" class="field" placeholder="Voornaam" required>
+                <input type="text" name="voornaam" class="field" placeholder="Voornaam" required>
               </div>
               <div>
                 <label class="block text-ink/50 text-xs font-bold uppercase tracking-[0.12em] mb-2">Naam *</label>
-                <input type="text" class="field" placeholder="Naam" required>
+                <input type="text" name="naam" class="field" placeholder="Naam" required>
               </div>
             </div>
             <div>
               <label class="block text-ink/50 text-xs font-bold uppercase tracking-[0.12em] mb-2">E-mail *</label>
-              <input type="email" class="field" placeholder="naam@email.be" required>
+              <input type="email" name="email" class="field" placeholder="naam@email.be" required>
             </div>
             <div>
               <label class="block text-ink/50 text-xs font-bold uppercase tracking-[0.12em] mb-2">Telefoonnummer</label>
-              <input type="tel" class="field" placeholder="+32 …">
+              <input type="tel" name="telefoon" class="field" placeholder="+32 …">
             </div>
             <div>
               <label class="block text-ink/50 text-xs font-bold uppercase tracking-[0.12em] mb-2">Interesse in</label>
-              <select class="field select-muted">
+              <select name="interesse" class="field select-muted">
                 <option value="" disabled selected>— Selecteer een woning —</option>
                 <option class="opt-ink">Woning 3 — 141,62 m² · tuin 125,48 m²</option>
                 <option class="opt-ink">Woning 4 — 141,62 m² · tuin 29,50 m²</option>
@@ -747,10 +747,10 @@
             </div>
             <div>
               <label class="block text-ink/50 text-xs font-bold uppercase tracking-[0.12em] mb-2">Bericht</label>
-              <textarea class="field resize-none" rows="4" placeholder="Uw bericht…"></textarea>
+              <textarea name="bericht" class="field resize-none" rows="4" placeholder="Uw bericht…"></textarea>
             </div>
             <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 w-4 h-4 shrink-0 accent-forest" required>
+              <input type="checkbox" name="_privacy" class="mt-1 w-4 h-4 shrink-0 accent-forest" required>
               <span class="text-ink/55 text-sm leading-relaxed">
                 Ik ga akkoord met de
                 <a href="#" class="text-forest underline hover:no-underline">privacyverklaring</a>
