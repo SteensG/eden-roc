@@ -218,6 +218,60 @@
     .select-muted     { color: #9fb5ad; }
     .opt-ink          { color: #1a2d25; }
     .thead-forest     { background: #2b5c47; }
+
+    /* ── Plan download modal ──────────────────── */
+    .plan-modal-wrap {
+      position: fixed; inset: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: center; padding: 24px;
+      visibility: hidden; pointer-events: none;
+    }
+    .plan-modal-wrap.open {
+      visibility: visible; pointer-events: auto;
+    }
+    .plan-modal-backdrop {
+      position: absolute; inset: 0;
+      background: rgba(26,45,37,0.65);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .plan-modal-wrap.open .plan-modal-backdrop { opacity: 1; }
+    .plan-modal-card {
+      position: relative; z-index: 1;
+      background: white; width: 100%; max-width: 480px;
+      padding: 40px 36px; border-radius: 2px;
+      box-shadow: 0 32px 80px rgba(26,45,37,0.22), 0 8px 24px rgba(26,45,37,0.10);
+      opacity: 0; transform: translateY(16px) scale(0.98);
+      transition: opacity 0.3s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .plan-modal-wrap.open .plan-modal-card {
+      opacity: 1; transform: translateY(0) scale(1);
+    }
+    .plan-modal-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #1a2d25; opacity: 0.35;
+      transition: opacity 0.2s ease, background 0.2s ease;
+      cursor: pointer;
+    }
+    .plan-modal-close:hover { opacity: 0.7; background: rgba(43,92,71,0.06); }
+    .plan-error {
+      color: #c0392b; font-size: 13px; padding: 10px 14px;
+      background: rgba(192,57,43,0.07); border-left: 3px solid #c0392b;
+    }
+    .plan-error.hidden { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .plan-spinner {
+      width: 18px; height: 18px; border-radius: 50%;
+      border: 2.5px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      animation: spin 0.7s linear infinite;
+      display: inline-block;
+    }
+    .plan-btn { cursor: pointer; }
+    .plan-btn:focus-visible { outline: 2px solid #a7c15e; outline-offset: 2px; border-radius: 2px; }
   </style>
 </head>
 <body class="font-sans text-ink bg-white">
@@ -530,10 +584,10 @@
               <td class="py-5 px-5 text-ink/65 text-base">125,48 m²</td>
               <td class="py-5 px-5"><span class="badge-ok">Beschikbaar</span></td>
               <td class="py-5 px-5 pr-7">
-                <a href="#contact" class="text-forest text-sm font-semibold hover:underline inline-flex items-center gap-1.5">
+                <button type="button" class="plan-btn text-forest text-sm font-semibold hover:underline inline-flex items-center gap-1.5" data-woning="Woning 3" data-pdf="plannen/woning1.pdf">
                   <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                  Aanvragen
-                </a>
+                  Plan downloaden
+                </button>
               </td>
             </tr>
             <tr class="offer-row border-b border-ink/6 tr-alt">
@@ -544,10 +598,10 @@
               <td class="py-5 px-5 text-ink/65 text-base">29,50 m²</td>
               <td class="py-5 px-5"><span class="badge-ok">Beschikbaar</span></td>
               <td class="py-5 px-5 pr-7">
-                <a href="#contact" class="text-forest text-sm font-semibold hover:underline inline-flex items-center gap-1.5">
+                <button type="button" class="plan-btn text-forest text-sm font-semibold hover:underline inline-flex items-center gap-1.5" data-woning="Woning 4" data-pdf="plannen/woning2.pdf">
                   <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                  Aanvragen
-                </a>
+                  Plan downloaden
+                </button>
               </td>
             </tr>
             <tr class="offer-row border-b border-ink/6">
@@ -558,10 +612,10 @@
               <td class="py-5 px-5 text-ink/65 text-base">29,50 m²</td>
               <td class="py-5 px-5"><span class="badge-ok">Beschikbaar</span></td>
               <td class="py-5 px-5 pr-7">
-                <a href="#contact" class="text-forest text-sm font-semibold hover:underline inline-flex items-center gap-1.5">
+                <button type="button" class="plan-btn text-forest text-sm font-semibold hover:underline inline-flex items-center gap-1.5" data-woning="Woning 5" data-pdf="plannen/woning3.pdf">
                   <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                  Aanvragen
-                </a>
+                  Plan downloaden
+                </button>
               </td>
             </tr>
             <tr class="offer-row tr-alt">
@@ -572,10 +626,10 @@
               <td class="py-5 px-5 text-ink/65 text-base">89,58 m²</td>
               <td class="py-5 px-5"><span class="badge-ok">Beschikbaar</span></td>
               <td class="py-5 px-5 pr-7">
-                <a href="#contact" class="text-forest text-sm font-semibold hover:underline inline-flex items-center gap-1.5">
+                <button type="button" class="plan-btn text-forest text-sm font-semibold hover:underline inline-flex items-center gap-1.5" data-woning="Woning 6" data-pdf="plannen/woning4.pdf">
                   <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                  Aanvragen
-                </a>
+                  Plan downloaden
+                </button>
               </td>
             </tr>
           </tbody>
@@ -796,6 +850,72 @@
 
 
   <!-- ═══════════════════════════════════════════
+       PLAN DOWNLOAD MODAL
+  ═══════════════════════════════════════════ -->
+  <div id="plan-modal" class="plan-modal-wrap" role="dialog" aria-modal="true" aria-labelledby="plan-modal-title">
+    <div class="plan-modal-backdrop" id="plan-modal-backdrop"></div>
+    <div class="plan-modal-card">
+
+      <!-- Close -->
+      <button type="button" id="plan-modal-close" class="plan-modal-close" aria-label="Sluiten">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M4 4l12 12M16 4L4 16"/>
+        </svg>
+      </button>
+
+      <!-- Form state -->
+      <div id="plan-form-state">
+        <span class="sec-label" id="plan-modal-label">Plannen</span>
+        <h2 id="plan-modal-title" class="text-ink font-black text-2xl lg:text-3xl leading-[1.1] tracking-[-0.02em] mb-2">Plan downloaden</h2>
+        <p class="text-ink/55 text-sm leading-relaxed mb-7">Vul uw gegevens in om het grondplan van <strong id="plan-modal-woning" class="text-forest"></strong> te downloaden.</p>
+
+        <form id="plan-form" class="space-y-4" novalidate>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-ink/50 text-xs font-bold uppercase tracking-[0.12em] mb-1.5">Voornaam *</label>
+              <input type="text" name="voornaam" class="field" placeholder="Voornaam" required>
+            </div>
+            <div>
+              <label class="block text-ink/50 text-xs font-bold uppercase tracking-[0.12em] mb-1.5">Naam *</label>
+              <input type="text" name="naam" class="field" placeholder="Naam" required>
+            </div>
+          </div>
+          <div>
+            <label class="block text-ink/50 text-xs font-bold uppercase tracking-[0.12em] mb-1.5">E-mail *</label>
+            <input type="email" name="email" class="field" placeholder="naam@email.be" required>
+          </div>
+          <div>
+            <label class="block text-ink/50 text-xs font-bold uppercase tracking-[0.12em] mb-1.5">GSM *</label>
+            <input type="tel" name="gsm" class="field" placeholder="+32 …" required>
+          </div>
+          <input type="hidden" name="woning" id="plan-hidden-woning">
+          <input type="hidden" name="_subject" value="Plannen aanvraag — Eden Roc">
+          <p id="plan-error" class="plan-error hidden">Er ging iets mis. Probeer het opnieuw.</p>
+          <button type="submit" id="plan-submit-btn" class="btn btn-green w-full mt-2">
+            <span id="plan-btn-label">Plan downloaden</span>
+            <span id="plan-btn-loading" class="hidden plan-spinner"></span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Success state -->
+      <div id="plan-success-state" class="hidden text-center py-6">
+        <div class="flex justify-center mb-6">
+          <div class="w-16 h-16 rounded-full bg-moss/15 flex items-center justify-center">
+            <svg class="w-8 h-8 text-forest" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 25 L20 35 L38 15"/>
+            </svg>
+          </div>
+        </div>
+        <h3 class="text-ink font-black text-xl mb-2">Download start dadelijk</h3>
+        <p class="text-ink/55 text-sm leading-relaxed">Bedankt! Uw download start automatisch. Lukt het niet? <a id="plan-direct-link" href="#" class="text-forest underline" download>Klik hier</a>.</p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
        FOOTER
   ═══════════════════════════════════════════ -->
   <footer class="bg-ink py-14">
@@ -899,6 +1019,98 @@
 
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
       revealObserver.observe(el);
+    });
+
+    // ── Plan download modal ──────────────────────
+    const planModal      = document.getElementById('plan-modal');
+    const planBackdrop   = document.getElementById('plan-modal-backdrop');
+    const planCloseBtn   = document.getElementById('plan-modal-close');
+    const planForm       = document.getElementById('plan-form');
+    const planFormState  = document.getElementById('plan-form-state');
+    const planSuccessState = document.getElementById('plan-success-state');
+    const planWoningLabel  = document.getElementById('plan-modal-woning');
+    const planHiddenWoning = document.getElementById('plan-hidden-woning');
+    const planSubmitBtn    = document.getElementById('plan-submit-btn');
+    const planBtnLabel     = document.getElementById('plan-btn-label');
+    const planBtnLoading   = document.getElementById('plan-btn-loading');
+    const planError        = document.getElementById('plan-error');
+    const planDirectLink   = document.getElementById('plan-direct-link');
+    let currentPdf = '';
+
+    function openPlanModal(woning, pdf) {
+      currentPdf = pdf;
+      planWoningLabel.textContent = woning;
+      planHiddenWoning.value = woning;
+      planDirectLink.href = pdf;
+      planFormState.classList.remove('hidden');
+      planSuccessState.classList.add('hidden');
+      planError.classList.add('hidden');
+      planForm.reset();
+      planModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => planForm.querySelector('input').focus(), 300);
+    }
+
+    function closePlanModal() {
+      planModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.plan-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        openPlanModal(btn.dataset.woning, btn.dataset.pdf);
+      });
+    });
+
+    planCloseBtn.addEventListener('click', closePlanModal);
+    planBackdrop.addEventListener('click', closePlanModal);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closePlanModal();
+    });
+
+    planForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!planForm.checkValidity()) { planForm.reportValidity(); return; }
+
+      planBtnLabel.classList.add('hidden');
+      planBtnLoading.classList.remove('hidden');
+      planSubmitBtn.disabled = true;
+      planError.classList.add('hidden');
+
+      const data = {
+        voornaam: planForm.voornaam.value,
+        naam: planForm.naam.value,
+        email: planForm.email.value,
+        gsm: planForm.gsm.value,
+        woning: planHiddenWoning.value,
+        _subject: 'Plannen aanvraag — Eden Roc',
+      };
+
+      try {
+        const res = await fetch('https://submit-form.com/dAbJT14I7', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        if (!res.ok) throw new Error('submit failed');
+
+        // Trigger download
+        const a = document.createElement('a');
+        a.href = currentPdf;
+        a.download = '';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        planFormState.classList.add('hidden');
+        planSuccessState.classList.remove('hidden');
+      } catch {
+        planError.classList.remove('hidden');
+        planBtnLabel.classList.remove('hidden');
+        planBtnLoading.classList.add('hidden');
+        planSubmitBtn.disabled = false;
+      }
     });
   </script>
 
