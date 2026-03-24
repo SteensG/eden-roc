@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eden Roc — Jouw thuis aan het water</title>
+  <link rel="icon" href="brand-assets/logo-eden-roc/EDEN ROC SVG/EDEN ROC - FAVICON.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600&display=swap" rel="stylesheet">
@@ -42,9 +43,10 @@
     }
     #main-nav.scrolled .nav-link { color: #1a2d25; }
     #main-nav.scrolled .nav-link:hover { color: #2b5c47; }
-    #main-nav.scrolled #nav-logo { filter: none; }
+    #main-nav.scrolled #nav-logo { filter: invert(1); }
     #main-nav.scrolled #nav-cta { background: #2b5c47; color: white; }
     #main-nav.scrolled #nav-cta:hover { background: #1e4234; }
+    #main-nav.scrolled #mob-toggle { color: #1a2d25; }
 
     /* ── Buttons ──────────────────────────────── */
     .btn {
@@ -284,9 +286,9 @@
 
       <a href="#top" aria-label="Eden Roc home">
         <img id="nav-logo"
-             src="brand-assets/logo-eden-roc/logo-eden-roc@4x.png"
+             src="brand-assets/logo-eden-roc/EDEN ROC SVG/EDEN ROC - LOGO WIT.svg"
              alt="Eden Roc"
-             class="h-10 w-auto logo-nav">
+             class="h-10 w-auto">
       </a>
 
       <!-- Desktop links -->
@@ -918,44 +920,32 @@
   <!-- ═══════════════════════════════════════════
        FOOTER
   ═══════════════════════════════════════════ -->
-  <footer class="bg-ink py-14">
+  <footer class="bg-ink py-5">
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
 
-      <div class="flex flex-col md:flex-row items-center justify-between gap-10 pb-10 border-b border-white/10">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
 
-        <!-- Logo + address -->
-        <div class="flex flex-col items-center md:items-start gap-3">
-          <img src="brand-assets/logo-eden-roc/logo-eden-roc@4x.png"
-               alt="Eden Roc"
-               class="h-10 w-auto logo-footer-img">
-          <p class="text-white/35 text-sm">Steenland 16, Lede</p>
+        <!-- Address -->
+        <p class="text-white/40 text-sm">Projectadres: Steenland&nbsp;16, 9340&nbsp;Lede</p>
+
+        <!-- Mentres -->
+        <div class="flex items-center gap-3">
+          <span class="text-white/40 text-sm">Een project van</span>
+          <img src="brand-assets/logo-mentres/MENTRES_wit.svg"
+               alt="Mentres"
+               class="h-5 w-auto opacity-70">
         </div>
 
-        <!-- Nav -->
-        <nav aria-label="Paginanavigatie" class="flex flex-wrap justify-center gap-x-8 gap-y-2">
-          <a href="#project"   class="text-white/45 text-sm hover:text-white transition-colors duration-200">Project</a>
-          <a href="#voordelen" class="text-white/45 text-sm hover:text-white transition-colors duration-200">Voordelen</a>
-          <a href="#aanbod"    class="text-white/45 text-sm hover:text-white transition-colors duration-200">Aanbod</a>
-          <a href="#ligging"   class="text-white/45 text-sm hover:text-white transition-colors duration-200">Ligging</a>
-          <a href="#contact"   class="text-white/45 text-sm hover:text-white transition-colors duration-200">Contact</a>
-        </nav>
-
-        <!-- Agency -->
-        <div class="flex flex-col items-center md:items-end gap-2">
-          <span class="text-white/25 text-xs uppercase tracking-[0.15em]">Marketing door</span>
-          <img src="brand-assets/logo-tricks/tricks-for-bricks_logo_rgb wit.svg"
-               alt="Tricks for Bricks"
-               class="h-9 w-auto opacity-70">
-        </div>
+        <!-- Another TFB brand -->
+        <img src="brand-assets/logo-tricks/another-tfb-brand (2).svg"
+             alt="Another Tricks for Bricks brand"
+             class="h-5 w-auto opacity-60">
 
       </div>
 
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-6">
-        <p class="text-white/25 text-xs">© 2026 Eden Roc. Alle rechten voorbehouden.</p>
-        <div class="flex gap-5">
-          <a href="#" class="text-white/25 text-xs hover:text-white/55 transition-colors duration-200">Privacyverklaring</a>
-          <a href="#" class="text-white/25 text-xs hover:text-white/55 transition-colors duration-200">Cookie-instellingen</a>
-        </div>
+      <div class="border-t border-white/10 mt-5 pt-4 flex flex-col md:flex-row justify-between items-center gap-3">
+        <p class="text-white/20 text-xs">© 2026 Eden Roc. Alle rechten voorbehouden.</p>
+        <a href="privacyverklaring.html" class="text-white/20 text-xs hover:text-white/50 transition-colors duration-200">Privacyverklaring</a>
       </div>
 
     </div>
